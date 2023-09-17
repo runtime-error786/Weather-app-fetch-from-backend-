@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css"
+      integrity="INTEGRITY_STRING"
+      crossorigin="anonymous"
+    />
+    <title>Weather App</title>
+</head>
+<style>
+    .card{
+        background-color: antiquewhite;
+        border: 2px solid black;
+        border-radius: 20px;
+        width: 350px;
+        height: 350px;
+        text-align: center;
+        position:relative;
+        left: 550px;
+        top: 100px;
+        overflow: hidden;
+       
+    }
+
+    @keyframes hell {
+        from{
+            transform: rotate(0deg); 
+        }
+        to{
+            transform: rotate(360deg); 
+        }
+    }
+
+    .aq{
+        animation-name: hell;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+    }
+    .j7{
+        margin: 30px 30px;
+    }
+    .j8{
+        border-radius: 100px;
+        background-color:azure;
+        width: 300px;
+        height: 300px;
+        opacity: 0.5;
+
+    }
+
+</style>
+<body>
+    <div class="card">
+        <div id="j1" class="j7">
+            <i class="fa-regular fa-sun fa-2xl" style="color:#fbc531"></i>
+        </div>
+        <div id="j2" class="j7">
+            {%city%} , {%coun%}
+        </div>
+        <div id="j3" class="j7">
+            SUN | Sep 18 | 12:06 AM
+        </div>
+        <div id="j4" class="j7">
+            {%temp%} &#8451;
+        </div>
+        <div id="j5" class="j7">
+            Min : {%min%} &#8451; | Max : {%max%} &#8451;
+        </div>
+        <div class="j8 aq">
+
+        </div>
+    </div>
+
+    <script>
+
+        let all = ()=>{
+            let days= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            let month =["Jan","Feb","Mar","Apr","May","June","Jul","aug","sep","oct","nov","dec"];
+            let dm,dy,dd,th,tm,ts,dt;
+            let r = new Date();
+            dm = r.getMonth();
+            dy = r.getFullYear();
+            dd = r.getDay();
+            dt = r.getDate();
+            dm = month[dm];
+            dd = days[dd];
+            th = r.getHours();
+            tm = r.getMinutes();
+            ts = r.getSeconds();
+    
+            if(tm<10)
+            {
+                tm = "0" + tm;
+            }
+            if(ts<10)
+            {
+                ts = "0" + ts;
+            }
+    
+            if(th<10)
+            {
+                th = "0" + th;
+            }
+    
+            if(th<=12)
+            {
+                ts = ts + " AM";
+            }
+            else{
+                ts = ts + " PM";
+            }
+    
+            document.getElementById("j3").innerText = ` ${dd} | ${dm} ${dt} | ${dy} | ${th}:${tm}:${ts}`;
+    
+        }
+        
+        all();
+        
+       </script>
+</body>
+</html>
